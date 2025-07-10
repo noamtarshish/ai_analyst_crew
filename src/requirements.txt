@@ -1,0 +1,5 @@
+crewai==0.1.26
+pandas
+scikit-learn
+yfinance
+openai

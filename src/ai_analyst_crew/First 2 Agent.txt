@@ -1,0 +1,215 @@
+C:\Users\user\PycharmProjects\ai_analyst_crew\.venv\Scripts\python.exe C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\main.py
+Enter stock symbol (e.g. NVDA, MSFT, ^GSPC): NVDA
+Enter forecast horizon (1, 5, or 21): 5
+┌────────────────────────── Crew Execution Started ───────────────────────────┐
+│                                                                             │
+│  Crew Execution Started                                                     │
+│  Name: crew                                                                 │
+│  ID: 6deef91f-6c1f-4e53-83e0-7c4fd025a267                                   │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+    Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Task: Use the tool `forecast_with_model` to generate a forecast for the    │
+│  stock NVDA 5 days ahead. Do not use any other tool or return a textual     │
+│  explanation.                                                               │
+│  Simply call the tool and return its full output.                           │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🛠️ DEBUG: Starting XGBoost forecast for NVDA (t+5)
+✅ DEBUG: Loaded 1234 rows for symbol NVDA
+📅 DEBUG: Data range from 2020-07-24 to 2025-06-23
+📊 DEBUG: Training size: 983, Test size: 246
+C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technical_tools.py:54: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
+  df['Date'] = pd.to_datetime(df['Date'])
+🔮 DEBUG: Last close: 0.9466
+📈 DEBUG: Predicted close in 5 days: 0.8064
+📉 DEBUG: RMSE on test set: 0.1009
+🚀 Crew: crew
+└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+    Status: Executing Task...
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Thought: Thought: I need to use the Advanced Technical Forecast with       │
+│  XGBoost tool to predict the close price of NVDA stock 5 days from now.     │
+│                                                                             │
+│  Using Tool: Advanced Technical Forecast with XGBoost                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Input ─────────────────────────────────┐
+│                                                                             │
+│  "{\"symbol\": \"NVDA\", \"days_ahead\": 5}"                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Output ────────────────────────────────┐
+│                                                                             │
+│  🤖 XGBoost Forecast for NVDA (t+5 days):                                   │
+│  - Last Close: 0.9466                                                       │
+│  - Predicted Close: 0.8064                                                  │
+│  - RMSE on test data: 0.1009                                                │
+│  - Model used features like RSI, MACD, Momentum and more.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+    Status: Executing Task...
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Final Answer:                                                              │
+│  🤖 XGBoost Forecast for NVDA (t+5 days):                                   │
+│  - Last Close: 0.9466                                                       │
+│  - Predicted Close: 0.8064                                                  │
+│  - RMSE on test data: 0.1009                                                │
+│  - Model used features like RSI, MACD, Momentum and more.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+    Assigned to: Stock Market Technical Analyst
+
+    Status: ✅ Completed
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
+│                                                                             │
+│  Task Completed                                                             │
+│  Name: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2                                 │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+    Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Task: Retrieve and analyze news headlines related to the stock NVDA, then  │
+│  classify the daily sentiment as Positive, Negative, or Neutral.            │
+│  Use your sentiment analysis tool to compute a score, identify the top      │
+│  headline, and give a summary explanation.                                  │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🛠️ DEBUG: Running sentiment analysis for NVDA
+📰 Top Headline: NVIDIA posts record revenue in Q2
+📊 Sentiment Score: 0.50 → Positive
+🚀 Crew: crew
+├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+    Status: Executing Task...
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Thought: Thought: To determine the current market sentiment for NVDA, I    │
+│  need to analyze the recent news using my sentiment analysis tool.          │
+│                                                                             │
+│  Using Tool: Sentiment Analysis of News Headlines                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Input ─────────────────────────────────┐
+│                                                                             │
+│  "{\"symbol\": \"NVDA\"}"                                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Output ────────────────────────────────┐
+│                                                                             │
+│  💬 Sentiment Analysis for NVDA:                                            │
+│  - Top Headline: NVIDIA posts record revenue in Q2                          │
+│  - Sentiment Score: 0.50                                                    │
+│  - Final Sentiment: Positive                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+    Status: Executing Task...
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Final Answer:                                                              │
+│  💬 Sentiment Analysis for NVDA:                                            │
+│  - Top Headline: NVIDIA posts record revenue in Q2                          │
+│  - Sentiment Score: 0.50                                                    │
+│  - Final Sentiment: Positive                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+    Assigned to: Market Sentiment Analyst
+
+    Status: ✅ Completed
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
+│                                                                             │
+│  Task Completed                                                             │
+│  Name: 92cb58a7-22dc-401a-bbe0-1c3cc8214910                                 │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────── Crew Completion ──────────────────────────────┐
+│                                                                             │
+│  Crew Execution Completed                                                   │
+│  Name: crew                                                                 │
+│  ID: 6deef91f-6c1f-4e53-83e0-7c4fd025a267                                   │
+│  Tool Args:                                                                 │
+│  Final Output: 💬 Sentiment Analysis for NVDA:                              │
+│  - Top Headline: NVIDIA posts record revenue in Q2                          │
+│  - Sentiment Score: 0.50                                                    │
+│  - Final Sentiment: Positive                                                │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🟢 Final Output:
+ 💬 Sentiment Analysis for NVDA:
+- Top Headline: NVIDIA posts record revenue in Q2
+- Sentiment Score: 0.50
+- Final Sentiment: Positive
+
+Process finished with exit code 0

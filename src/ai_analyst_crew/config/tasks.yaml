@@ -1,0 +1,21 @@
+technical_forecast_task:
+  description: >
+    Use the tool `forecast_with_model` to generate a forecast for the stock {symbol}
+    {days_ahead} days ahead. Do not use any other tool or return a textual explanation.
+
+    Simply call the tool and return its full output.
+  expected_output: >
+    The predicted close price and brief evaluation (last close, predicted close, RMSE).
+  agent: technical_analyst
+
+
+sentiment_analysis_task:
+  description: >
+    Retrieve and analyze news headlines related to the stock {symbol}, then classify
+    the daily sentiment as Positive, Negative, or Neutral.
+
+    Use your sentiment analysis tool to compute a score, identify the top headline,
+    and give a summary explanation.
+  expected_output: >
+    A sentiment score (from -1 to 1), top headline, and final sentiment label (Positive, Neutral, or Negative).
+  agent: sentiment_analyst

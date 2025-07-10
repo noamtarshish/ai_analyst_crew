@@ -1,0 +1,26 @@
+[project]
+name = "ai_analyst_crew"
+version = "0.1.0"
+description = "ai-analyst-crew using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.126.0,<1.0.0",
+    "pandas>=2.3.1",
+    "scikit-learn>=1.7.0",
+    "xgboost>=3.0.2",
+]
+
+[project.scripts]
+ai_analyst_crew = "ai_analyst_crew.main:run"
+run_crew = "ai_analyst_crew.main:run"
+train = "ai_analyst_crew.main:train"
+replay = "ai_analyst_crew.main:replay"
+test = "ai_analyst_crew.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
