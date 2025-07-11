@@ -1,4 +1,4 @@
-crewai==0.1.26
+crewai==0.126.0
 pandas
 scikit-learn
 yfinance
