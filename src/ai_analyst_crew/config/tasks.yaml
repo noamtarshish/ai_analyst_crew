@@ -1,12 +1,26 @@
+#technical_forecast_task:
+#  description: >
+#    Use the tool `forecast_with_model` to generate a forecast for the stock {symbol}
+#    {days_ahead} days ahead. Do not use any other tool or return a textual explanation.
+#
+#    Simply call the tool and return its full output.
+#  expected_output: >
+#    The predicted close price and brief evaluation (last close, predicted close, RMSE).
+#  agent: technical_analyst
+
 technical_forecast_task:
   description: >
-    Use the tool `forecast_with_model` to generate a forecast for the stock {symbol}
-    {days_ahead} days ahead. Do not use any other tool or return a textual explanation.
+    Run multiple technical forecasting models (XGBoost, ARIMA, Naive) on the stock {symbol},
+    for {days_ahead} days ahead. Compare model performance (RMSE) and return the best forecast.
 
-    Simply call the tool and return its full output.
+    Present the results clearly. Do not use explanations beyond what the tool returns.
   expected_output: >
-    The predicted close price and brief evaluation (last close, predicted close, RMSE).
+    A markdown summary showing:
+    - Each model’s prediction and RMSE
+    - The best model selected
+    - The final forecasted close price
   agent: technical_analyst
+
 
 
 sentiment_analysis_task:

@@ -4,7 +4,8 @@ from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 
 from ai_analyst_crew.tools.sentiment_tools import analyze_sentiment_from_news
-from ai_analyst_crew.tools.technical_tools import forecast_price, forecast_with_model
+# from ai_analyst_crew.tools.technical_tools import forecast_price, forecast_with_model
+from ai_analyst_crew.tools.technical_tools import forecast_with_multiple_models
 from ai_analyst_crew.tools.fundamental_tools import analyze_fundamentals
 
 
@@ -25,7 +26,7 @@ class AiAnalystCrew():
     def technical_analyst(self) -> Agent:
         return Agent(
             config=self.agents_config['technical_analyst'], # type: ignore[index]
-            tools=[forecast_with_model],
+            tools=[forecast_with_multiple_models],
             verbose=True
         )
 
