@@ -19,3 +19,13 @@ sentiment_analysis_task:
   expected_output: >
     A sentiment score (from -1 to 1), top headline, and final sentiment label (Positive, Neutral, or Negative).
   agent: sentiment_analyst
+
+
+fundamental_analysis_task:
+  description: >
+    Use the tool to analyze recent fundamentals for the stock {symbol} provided.
+    Provide a rating (Good/Neutral/Poor) and a brief explanation.
+  expected_output: >
+    A summary including: rating, explanation, and date of data.
+  agent: fundamental_analyst
+

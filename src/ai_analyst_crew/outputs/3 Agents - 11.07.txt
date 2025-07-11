@@ -1,0 +1,365 @@
+C:\Users\user\PycharmProjects\ai_analyst_crew\.venv\Scripts\python.exe C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\main.py
+Welcome to the AI Stock Analyst Recommender System! 🧑‍💻
+Enter stock symbol (e.g. NVDA, MSFT, ^GSPC): NVDA
+Enter forecast horizon (1, 5, or 21): 5
+┌────────────────────────── Crew Execution Started ───────────────────────────┐
+│                                                                             │
+│  Crew Execution Started                                                     │
+│  Name: crew                                                                 │
+│  ID: 9b999934-40a0-45ff-80b6-ec57c97d1d9b                                   │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+    Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Task: Use the tool `forecast_with_model` to generate a forecast for the    │
+│  stock NVDA 5 days ahead. Do not use any other tool or return a textual     │
+│  explanation.                                                               │
+│  Simply call the tool and return its full output.                           │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🛠️ DEBUG: Starting XGBoost forecast for NVDA (t+5)
+C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technical_tools.py:54: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
+  df['Date'] = pd.to_datetime(df['Date'])
+✅ DEBUG: Loaded 1234 rows for symbol NVDA
+📅 DEBUG: Data range from 2020-07-24 to 2025-06-23
+📊 DEBUG: Training size: 983, Test size: 246
+🔮 DEBUG: Last close: 0.9466
+📈 DEBUG: Predicted close in 5 days: 0.8064
+📉 DEBUG: RMSE on test set: 0.1009
+🚀 Crew: crew
+└── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+    Status: Executing Task...
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Thought: Thought: The user wants a forecast for the stock "NVDA" 5 days    │
+│  ahead using the given tool rather than the outdated                        │
+│  'forecast_with_model'. I must use the correct tool "Advanced Technical     │
+│  Forecast with XGBoost" and input the correct arguments.                    │
+│                                                                             │
+│  Using Tool: Advanced Technical Forecast with XGBoost                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Input ─────────────────────────────────┐
+│                                                                             │
+│  "{\"symbol\": \"NVDA\", \"days_ahead\": 5}"                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Output ────────────────────────────────┐
+│                                                                             │
+│  🤖 XGBoost Forecast for NVDA (t+5 days):                                   │
+│  - Last Close: 0.9466                                                       │
+│  - Predicted Close: 0.8064                                                  │
+│  - RMSE on test data: 0.1009                                                │
+│  - Model used features like RSI, MACD, Momentum and more.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+    Status: Executing Task...
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
+│                                                                             │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Final Answer:                                                              │
+│  🤖 XGBoost Forecast for NVDA (t+5 days):                                   │
+│  - Last Close: 0.9466                                                       │
+│  - Predicted Close: 0.8064                                                  │
+│  - RMSE on test data: 0.1009                                                │
+│  - Model used features like RSI, MACD, Momentum and more.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+└── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+    Assigned to: Stock Market Technical Analyst
+
+    Status: ✅ Completed
+    └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
+│                                                                             │
+│  Task Completed                                                             │
+│  Name: e8b497bb-ce5f-46ce-affe-2dac16b6be97                                 │
+│  Agent: Stock Market Technical Analyst                                      │
+│                                                                             │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+    Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Task: Retrieve and analyze news headlines related to the stock NVDA, then  │
+│  classify the daily sentiment as Positive, Negative, or Neutral.            │
+│  Use your sentiment analysis tool to compute a score, identify the top      │
+│  headline, and give a summary explanation.                                  │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🛠️ DEBUG: Running sentiment analysis for NVDA
+📰 Headlines: [{'title': 'Stock market today: S&P 500, Nasdaq eke out fresh records, Nvidia closes at $4T market cap', 'source': 'Yahoo Finance', 'date': '2025-07-10', 'url': 'https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-eke-out-fresh-records-nvidia-closes-at-4t-market-cap-200027558.html'}, {'title': 'Canadian tariffs, Nvidia’s milestone, Bitcoin - what’s moving markets', 'source': 'Investing.com', 'date': '2025-07-11', 'url': 'https://www.investing.com/news/economy/canadian-tariffs-nvidias-milestone-bitcoin--whats-moving-markets-4131305'}, {'title': 'Nvidia briefly touched $4 trillion market cap for first time', 'source': 'CNBC', 'date': '2025-07-10', 'url': 'https://www.cnbc.com/2025/07/09/nvidia-4-trillion.html'}, {'title': 'Nvidia becomes first company to reach $4 trillion market value', 'source': 'Yahoo Finance', 'date': '2025-07-10', 'url': 'https://finance.yahoo.com/news/nvidia-becomes-first-company-to-reach-4-trillion-market-value-141526534.html'}, {'title': 'Nvidia Becomes First Public Company Worth $4 Trillion', 'source': 'The New York Times', 'date': '2025-07-10', 'url': 'https://www.nytimes.com/2025/07/10/technology/nvidia-4-trillion-market-value.html'}]
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+    Status: Executing Task...
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Thought: Thought: To comply with the user's request to analyze recent      │
+│  news headlines and determine the sentiment related to the stock symbol     │
+│  NVDA, I will use the Sentiment Analysis of News Headlines tool.            │
+│                                                                             │
+│  Using Tool: Sentiment Analysis of News Headlines                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Input ─────────────────────────────────┐
+│                                                                             │
+│  "{\"symbol\": \"NVDA\"}"                                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Output ────────────────────────────────┐
+│                                                                             │
+│  Headline: Nvidia becomes first company to reach $4 trillion market value   │
+│  Source: Yahoo Finance                                                      │
+│  Date: 2025-07-10                                                           │
+│  URL:                                                                       │
+│  https://finance.yahoo.com/news/nvidia-becomes-first-company-to-reach-4-tr  │
+│  illion-market-value-141526534.html                                         │
+│  Sentiment: Positive                                                        │
+│  Score: +0.90                                                               │
+│  Explanation: This headline indicates a significant milestone for Nvidia,   │
+│  as it becomes the first company to reach a $4 trillion market value. This  │
+│  achievement reflects positively on the company's performance and investor  │
+│  confidence, leading to a positive sentiment.                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+    Status: Executing Task...
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
+│                                                                             │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Final Answer:                                                              │
+│  Sentiment Score: +0.90, Top Headline: "Nvidia becomes first company to     │
+│  reach $4 trillion market value", Final Sentiment Label: Positive.          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+└── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+    Assigned to: Market Sentiment Analyst
+
+    Status: ✅ Completed
+    └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
+│                                                                             │
+│  Task Completed                                                             │
+│  Name: 7ae1d40d-068a-4ee9-8840-fafe965da75d                                 │
+│  Agent: Market Sentiment Analyst                                            │
+│                                                                             │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+├── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+│   Assigned to: Market Sentiment Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Sentiment Analysis of News Headlines (1)
+└── 📋 Task: 39ceb50e-b50a-4a71-b091-8b36a55b3495
+    Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
+│                                                                             │
+│  Agent: Market Fundamentals Analyst"                                        │
+│                                                                             │
+│  Task: Use the tool to analyze recent fundamentals for the stock NVDA       │
+│  provided. Provide a rating (Good/Neutral/Poor) and a brief explanation.    │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🛠️ DEBUG: Fetching fundamentals for NVDA...
+C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\fundamental_tools.py:24: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  last_updated = yf.download(symbol, period="1d").index[-1].strftime("%Y-%m-%d")
+[*********************100%***********************]  1 of 1 completed
+📊 DEBUG: Extracted metrics:
+ - PE Ratio: 53.1068
+ - EPS: 3.09
+ - Debt/Equity: 12.267
+ - ROE: 1.15463
+ - Profit Margin: 0.51694
+ - Revenue Growth: 0.692
+📅 DEBUG: Last updated date: 2025-07-10
+DEBUG: GPT Output:
+ - **Rating:** Neutral
+- **Key Metrics Summary:** PE Ratio is relatively high, EPS is moderate, Debt/Equity ratio is high, ROE is low, Profit Margin is decent, Revenue Growth is strong.
+- **Explanation:** The company's overall health is neutral as it has some concerning metrics such as high Debt/Equity ratio and low ROE, but it also shows strong revenue growth and decent profit margin.
+- **As of:** 2025-07-10
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+├── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+│   Assigned to: Market Sentiment Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Sentiment Analysis of News Headlines (1)
+└── 📋 Task: 39ceb50e-b50a-4a71-b091-8b36a55b3495
+    Status: Executing Task...
+    └── 🔧 Used Fetch and Analyze Fundamental Data (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
+│                                                                             │
+│  Agent: Market Fundamentals Analyst"                                        │
+│                                                                             │
+│  Thought: Thought: To assess the financial health of NVDA, I will use the   │
+│  provided tool to pull the fundamental data and analyze its current         │
+│  financial status.                                                          │
+│                                                                             │
+│  Using Tool: Fetch and Analyze Fundamental Data                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Input ─────────────────────────────────┐
+│                                                                             │
+│  "{\"symbol\": \"NVDA\"}"                                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────── Tool Output ────────────────────────────────┐
+│                                                                             │
+│  - **Rating:** Neutral                                                      │
+│  - **Key Metrics Summary:** PE Ratio is relatively high, EPS is moderate,   │
+│  Debt/Equity ratio is high, ROE is low, Profit Margin is decent, Revenue    │
+│  Growth is strong.                                                          │
+│  - **Explanation:** The company's overall health is neutral as it has some  │
+│  concerning metrics such as high Debt/Equity ratio and low ROE, but it      │
+│  also shows strong revenue growth and decent profit margin.                 │
+│  - **As of:** 2025-07-10                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+├── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+│   Assigned to: Market Sentiment Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Sentiment Analysis of News Headlines (1)
+└── 📋 Task: 39ceb50e-b50a-4a71-b091-8b36a55b3495
+    Status: Executing Task...
+    └── 🔧 Used Fetch and Analyze Fundamental Data (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
+│                                                                             │
+│  Agent: Market Fundamentals Analyst"                                        │
+│                                                                             │
+│  Final Answer:                                                              │
+│  - **Rating:** Neutral                                                      │
+│  - **Key Metrics Summary:** PE Ratio is relatively high, EPS is moderate,   │
+│  Debt/Equity ratio is high, ROE is low, Profit Margin is decent, Revenue    │
+│  Growth is strong.                                                          │
+│  - **Explanation:** The company's overall health is neutral as it has some  │
+│  concerning metrics such as high Debt/Equity ratio and low ROE, but it      │
+│  also shows strong revenue growth and decent profit margin.                 │
+│  - **As of:** 2025-07-10                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🚀 Crew: crew
+├── 📋 Task: e8b497bb-ce5f-46ce-affe-2dac16b6be97
+│   Assigned to: Stock Market Technical Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
+├── 📋 Task: 7ae1d40d-068a-4ee9-8840-fafe965da75d
+│   Assigned to: Market Sentiment Analyst
+│
+│   Status: ✅ Completed
+│   └── 🔧 Used Sentiment Analysis of News Headlines (1)
+└── 📋 Task: 39ceb50e-b50a-4a71-b091-8b36a55b3495
+    Assigned to: Market Fundamentals Analyst"
+
+    Status: ✅ Completed
+    └── 🔧 Used Fetch and Analyze Fundamental Data (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
+│                                                                             │
+│  Task Completed                                                             │
+│  Name: 39ceb50e-b50a-4a71-b091-8b36a55b3495                                 │
+│  Agent: Market Fundamentals Analyst"                                        │
+│                                                                             │
+│  Tool Args:                                                                 │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────── Crew Completion ──────────────────────────────┐
+│                                                                             │
+│  Crew Execution Completed                                                   │
+│  Name: crew                                                                 │
+│  ID: 9b999934-40a0-45ff-80b6-ec57c97d1d9b                                   │
+│  Tool Args:                                                                 │
+│  Final Output: - **Rating:** Neutral                                        │
+│  - **Key Metrics Summary:** PE Ratio is relatively high, EPS is moderate,   │
+│  Debt/Equity ratio is high, ROE is low, Profit Margin is decent, Revenue    │
+│  Growth is strong.                                                          │
+│  - **Explanation:** The company's overall health is neutral as it has some  │
+│  concerning metrics such as high Debt/Equity ratio and low ROE, but it      │
+│  also shows strong revenue growth and decent profit margin.                 │
+│  - **As of:** 2025-07-10                                                    │
+│                                                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🟢 Final Output:
+ - **Rating:** Neutral
+- **Key Metrics Summary:** PE Ratio is relatively high, EPS is moderate, Debt/Equity ratio is high, ROE is low, Profit Margin is decent, Revenue Growth is strong.
+- **Explanation:** The company's overall health is neutral as it has some concerning metrics such as high Debt/Equity ratio and low ROE, but it also shows strong revenue growth and decent profit margin.
+- **As of:** 2025-07-10
+
+Process finished with exit code 0

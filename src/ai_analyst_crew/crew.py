@@ -5,6 +5,7 @@ from typing import List
 
 from ai_analyst_crew.tools.sentiment_tools import analyze_sentiment_from_news
 from ai_analyst_crew.tools.technical_tools import forecast_price, forecast_with_model
+from ai_analyst_crew.tools.fundamental_tools import analyze_fundamentals
 
 
 # If you want to run a snippet of code before or after the crew starts,
@@ -18,6 +19,7 @@ class AiAnalystCrew():
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
 
+    # AGENTS
 
     @agent
     def technical_analyst(self) -> Agent:
@@ -35,12 +37,19 @@ class AiAnalystCrew():
             verbose=True
         )
 
+    @agent
+    def fundamental_analyst(self) -> Agent:
+        return Agent(
+            config=self.agents_config['fundamental_analyst'], # type: ignore[index]
+            tools=[analyze_fundamentals],
+            verbose=True
+        )
 
 
 
-    # To learn more about structured task outputs,
-    # task dependencies, and task callbacks, check out the documentation:
-    # https://docs.crewai.com/concepts/tasks#overview-of-a-task
+
+    # TASKS
+
     @task
     def technical_forecast_task(self) -> Task:
         return Task(
@@ -53,6 +62,13 @@ class AiAnalystCrew():
             config=self.tasks_config['sentiment_analysis_task'], # type: ignore[index]
         )
 
+    @task
+    def fundamental_analysis_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['fundamental_analysis_task'], # type: ignore[index]
+        )
+
+
 
     @crew
     def crew(self) -> Crew:
@@ -61,8 +77,14 @@ class AiAnalystCrew():
         # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
 
         return Crew(
-            agents=[self.technical_analyst(), self.sentiment_analyst()], # Automatically created by the @agent decorator
-            tasks=[self.technical_forecast_task(), self.sentiment_analysis_task()], # Automatically created by the @task decorator
+            agents=[self.technical_analyst(),
+                    self.sentiment_analyst(),
+                    self. fundamental_analyst()
+                    ],
+            tasks=[self.technical_forecast_task(),
+                   self.sentiment_analysis_task(),
+                   self.fundamental_analysis_task()
+                   ],
             process=Process.sequential,
             verbose=True,
             # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/

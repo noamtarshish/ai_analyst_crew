@@ -1,18 +1,19 @@
 C:\Users\user\PycharmProjects\ai_analyst_crew\.venv\Scripts\python.exe C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\main.py
+Welcome to the AI Stock Analyst Recommender System! 🧑‍💻
 Enter stock symbol (e.g. NVDA, MSFT, ^GSPC): NVDA
 Enter forecast horizon (1, 5, or 21): 5
 ┌────────────────────────── Crew Execution Started ───────────────────────────┐
 │                                                                             │
 │  Crew Execution Started                                                     │
 │  Name: crew                                                                 │
-│  ID: 6deef91f-6c1f-4e53-83e0-7c4fd025a267                                   │
+│  ID: a0eae756-2f27-4414-8bb0-7177b8d96b43                                   │
 │  Tool Args:                                                                 │
 │                                                                             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+└── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
     Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
 │                                                                             │
 │  Agent: Stock Market Technical Analyst                                      │
@@ -27,23 +28,25 @@ Enter forecast horizon (1, 5, or 21): 5
 
 
 🛠️ DEBUG: Starting XGBoost forecast for NVDA (t+5)
+C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technical_tools.py:54: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
+  df['Date'] = pd.to_datetime(df['Date'])
 ✅ DEBUG: Loaded 1234 rows for symbol NVDA
 📅 DEBUG: Data range from 2020-07-24 to 2025-06-23
 📊 DEBUG: Training size: 983, Test size: 246
-C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technical_tools.py:54: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
-  df['Date'] = pd.to_datetime(df['Date'])
 🔮 DEBUG: Last close: 0.9466
 📈 DEBUG: Predicted close in 5 days: 0.8064
 📉 DEBUG: RMSE on test set: 0.1009
 🚀 Crew: crew
-└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+└── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
     Status: Executing Task...
     └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
 │                                                                             │
 │  Agent: Stock Market Technical Analyst                                      │
 │                                                                             │
-│  Thought: Thought: I need to use the Advanced Technical Forecast with       │
-│  XGBoost tool to predict the close price of NVDA stock 5 days from now.     │
+│  Thought: Thought: The user asked to use a tool called                      │
+│  `forecast_with_model`, but based on the available tools I should use       │
+│  "Advanced Technical Forecast with XGBoost". The request is to forecast     │
+│  the stock symbol NVDA 5 days ahead.                                        │
 │                                                                             │
 │  Using Tool: Advanced Technical Forecast with XGBoost                       │
 │                                                                             │
@@ -64,7 +67,7 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+└── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
     Status: Executing Task...
     └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
 │                                                                             │
@@ -80,14 +83,14 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-└── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+└── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
     Assigned to: Stock Market Technical Analyst
 
     Status: ✅ Completed
     └── 🔧 Used Advanced Technical Forecast with XGBoost (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
 │                                                                             │
 │  Task Completed                                                             │
-│  Name: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2                                 │
+│  Name: 9c38c29b-e7ec-4fea-a888-ea205ed8f822                                 │
 │  Agent: Stock Market Technical Analyst                                      │
 │                                                                             │
 │  Tool Args:                                                                 │
@@ -96,12 +99,12 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+├── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
 │   Assigned to: Stock Market Technical Analyst
 │
 │   Status: ✅ Completed
 │   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
-└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+└── 📋 Task: bee9a2f0-5c98-4501-b14a-a31ee6957fc3
     Status: Executing Task...┌───────────────────────────── 🤖 Agent Started ──────────────────────────────┐
 │                                                                             │
 │  Agent: Market Sentiment Analyst                                            │
@@ -116,22 +119,23 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 
 
 🛠️ DEBUG: Running sentiment analysis for NVDA
-📰 Top Headline: NVIDIA posts record revenue in Q2
-📊 Sentiment Score: 0.50 → Positive
+📰 Headlines: [{'title': 'Nvidia becomes first $4 trillion company at market close', 'source': 'The Washington Post', 'date': '2025-07-11', 'url': 'https://www.washingtonpost.com/technology/2025/07/10/nvidia-4-trillion-market-cap/'}, {'title': 'Nvidia briefly touched $4 trillion market cap for first time', 'source': 'CNBC', 'date': '2025-07-10', 'url': 'https://www.cnbc.com/2025/07/09/nvidia-4-trillion.html'}, {'title': 'Nvidia Becomes First Public Company Worth $4 Trillion', 'source': 'The New York Times', 'date': '2025-07-10', 'url': 'https://www.nytimes.com/2025/07/10/technology/nvidia-4-trillion-market-value.html'}, {'title': 'Nvidia, Delta, WK Kellogg, MP Materials, Vertiv, Helen of Troy, and More Market Movers', 'source': "Barron's", 'date': '2025-07-10', 'url': 'https://www.barrons.com/articles/stock-movers-415c3769'}, {'title': 'Indexes rise, boosted by Nvidia record valuation, strong Delta forecast', 'source': 'Yahoo Finance', 'date': '2025-07-10', 'url': 'https://finance.yahoo.com/news/wall-st-futures-ease-nvidias-101525992.html'}]
 🚀 Crew: crew
-├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+├── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
 │   Assigned to: Stock Market Technical Analyst
 │
 │   Status: ✅ Completed
 │   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
-└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+└── 📋 Task: bee9a2f0-5c98-4501-b14a-a31ee6957fc3
     Status: Executing Task...
     └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────── 🔧 Agent Tool Execution ──────────────────────────┐
 │                                                                             │
 │  Agent: Market Sentiment Analyst                                            │
 │                                                                             │
-│  Thought: Thought: To determine the current market sentiment for NVDA, I    │
-│  need to analyze the recent news using my sentiment analysis tool.          │
+│  Thought: Thought: To assist in understanding the current market sentiment  │
+│  surrounding NVDA, I need to use the sentiment analysis tool. This will     │
+│  provide a sentiment score, identify the most impactful news headline, and  │
+│  classify the overall sentiment as Positive, Negative, or Neutral.          │
 │                                                                             │
 │  Using Tool: Sentiment Analysis of News Headlines                           │
 │                                                                             │
@@ -143,47 +147,55 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 └─────────────────────────────────────────────────────────────────────────────┘
 ┌──────────────────────────────── Tool Output ────────────────────────────────┐
 │                                                                             │
-│  💬 Sentiment Analysis for NVDA:                                            │
-│  - Top Headline: NVIDIA posts record revenue in Q2                          │
-│  - Sentiment Score: 0.50                                                    │
-│  - Final Sentiment: Positive                                                │
+│  Headline: Nvidia becomes first $4 trillion company at market close         │
+│  Source: The Washington Post                                                │
+│  Date: 2025-07-11                                                           │
+│  URL:                                                                       │
+│  https://www.washingtonpost.com/technology/2025/07/10/nvidia-4-trillion-ma  │
+│  rket-cap/                                                                  │
+│  Sentiment: Positive                                                        │
+│  Score: +0.95                                                               │
+│  Explanation: The headline indicates a significant milestone for Nvidia as  │
+│  it becomes the first company to reach a $4 trillion market cap, which      │
+│  reflects strong investor confidence and positive market sentiment towards  │
+│  the company. This achievement is likely to be viewed positively by         │
+│  investors and analysts, leading to a positive sentiment.                   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+├── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
 │   Assigned to: Stock Market Technical Analyst
 │
 │   Status: ✅ Completed
 │   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
-└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+└── 📋 Task: bee9a2f0-5c98-4501-b14a-a31ee6957fc3
     Status: Executing Task...
     └── 🔧 Used Sentiment Analysis of News Headlines (1)┌─────────────────────────── ✅ Agent Final Answer ───────────────────────────┐
 │                                                                             │
 │  Agent: Market Sentiment Analyst                                            │
 │                                                                             │
 │  Final Answer:                                                              │
-│  💬 Sentiment Analysis for NVDA:                                            │
-│  - Top Headline: NVIDIA posts record revenue in Q2                          │
-│  - Sentiment Score: 0.50                                                    │
-│  - Final Sentiment: Positive                                                │
+│  Nvidia becomes first $4 trillion company at market close.  The sentiment   │
+│  score is +0.95, indicating a very positive sentiment. The final sentiment  │
+│  label is Positive.                                                         │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 🚀 Crew: crew
-├── 📋 Task: 7e7e8ede-8856-4dac-93b5-41ea758e5aa2
+├── 📋 Task: 9c38c29b-e7ec-4fea-a888-ea205ed8f822
 │   Assigned to: Stock Market Technical Analyst
 │
 │   Status: ✅ Completed
 │   └── 🔧 Used Advanced Technical Forecast with XGBoost (1)
-└── 📋 Task: 92cb58a7-22dc-401a-bbe0-1c3cc8214910
+└── 📋 Task: bee9a2f0-5c98-4501-b14a-a31ee6957fc3
     Assigned to: Market Sentiment Analyst
 
     Status: ✅ Completed
     └── 🔧 Used Sentiment Analysis of News Headlines (1)┌────────────────────────────── Task Completion ──────────────────────────────┐
 │                                                                             │
 │  Task Completed                                                             │
-│  Name: 92cb58a7-22dc-401a-bbe0-1c3cc8214910                                 │
+│  Name: bee9a2f0-5c98-4501-b14a-a31ee6957fc3                                 │
 │  Agent: Market Sentiment Analyst                                            │
 │                                                                             │
 │  Tool Args:                                                                 │
@@ -195,21 +207,19 @@ C:\Users\user\PycharmProjects\ai_analyst_crew\src\ai_analyst_crew\tools\technica
 │                                                                             │
 │  Crew Execution Completed                                                   │
 │  Name: crew                                                                 │
-│  ID: 6deef91f-6c1f-4e53-83e0-7c4fd025a267                                   │
+│  ID: a0eae756-2f27-4414-8bb0-7177b8d96b43                                   │
 │  Tool Args:                                                                 │
-│  Final Output: 💬 Sentiment Analysis for NVDA:                              │
-│  - Top Headline: NVIDIA posts record revenue in Q2                          │
-│  - Sentiment Score: 0.50                                                    │
-│  - Final Sentiment: Positive                                                │
+│  Final Output: Nvidia becomes first $4 trillion company at market close.    │
+│  The sentiment score is +0.95, indicating a very positive sentiment. The    │
+│  final sentiment label is Positive.                                         │
 │                                                                             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 
 🟢 Final Output:
- 💬 Sentiment Analysis for NVDA:
-- Top Headline: NVIDIA posts record revenue in Q2
-- Sentiment Score: 0.50
-- Final Sentiment: Positive
+ Nvidia becomes first $4 trillion company at market close.
+ The sentiment score is +0.95, indicating a very positive sentiment.
+ The final sentiment label is Positive.
 
 Process finished with exit code 0
