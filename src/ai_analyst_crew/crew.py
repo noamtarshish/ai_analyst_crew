@@ -46,6 +46,14 @@ class AiAnalystCrew():
             verbose=True
         )
 
+    @agent
+    def report_generator(self) -> Agent:
+        return Agent(
+            config=self.agents_config['report_generator'], # type: ignore[index]
+            tools=[],
+            verbose=True
+        )
+
 
 
 
@@ -69,6 +77,12 @@ class AiAnalystCrew():
             config=self.tasks_config['fundamental_analysis_task'], # type: ignore[index]
         )
 
+    @task
+    def generate_stock_report_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['generate_stock_report_task'], # type: ignore[index]
+        )
+
 
 
     @crew
@@ -80,11 +94,13 @@ class AiAnalystCrew():
         return Crew(
             agents=[self.technical_analyst(),
                     self.sentiment_analyst(),
-                    self. fundamental_analyst()
+                    self. fundamental_analyst(),
+                    self.report_generator()
                     ],
             tasks=[self.technical_forecast_task(),
                    self.sentiment_analysis_task(),
-                   self.fundamental_analysis_task()
+                   self.fundamental_analysis_task(),
+                   self.generate_stock_report_task()
                    ],
             process=Process.sequential,
             verbose=True,

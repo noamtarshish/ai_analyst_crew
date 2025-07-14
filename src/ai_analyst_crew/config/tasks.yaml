@@ -43,3 +43,20 @@ fundamental_analysis_task:
     A summary including: rating, explanation, and date of data.
   agent: fundamental_analyst
 
+generate_stock_report_task:
+  description: >
+    Based on the outputs from the technical forecast, sentiment analysis, and fundamental analysis,
+    generate a comprehensive report for the user. Include:
+
+    - A summary of each analysis
+    - The final forecasted price
+    - The best model chosen
+    - Sentiment score and explanation
+    - Fundamental rating and summary
+    - A final recommendation: BUY, HOLD, or SELL
+    - Use clear markdown formatting
+  expected_output: >
+    A markdown-formatted report combining all three analyses with a final investment recommendation.
+  agent: report_generator
+  output_file: stock_report.md
+

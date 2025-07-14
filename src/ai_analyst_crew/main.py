@@ -29,6 +29,7 @@ def run():
     try:
         result = AiAnalystCrew().crew().kickoff(inputs=inputs)
         print("\n🟢 Final Output:\n", result)
+
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
