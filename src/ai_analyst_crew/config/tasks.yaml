@@ -20,6 +20,7 @@ technical_forecast_task:
     - The best model selected
     - The final forecasted close price
   agent: technical_analyst
+  output_file: technical_forecast.json
 
 
 
@@ -33,6 +34,7 @@ sentiment_analysis_task:
   expected_output: >
     A sentiment score (from -1 to 1), top headline, and final sentiment label (Positive, Neutral, or Negative).
   agent: sentiment_analyst
+  output_file: sentiment_analysis.json
 
 
 fundamental_analysis_task:
@@ -42,12 +44,14 @@ fundamental_analysis_task:
   expected_output: >
     A summary including: rating, explanation, and date of data.
   agent: fundamental_analyst
+  output_file: fundamental_analysis.json
 
 generate_stock_report_task:
   description: >
     Based on the outputs from the technical forecast, sentiment analysis, and fundamental analysis,
-    generate a comprehensive report for the user. Include:
+    generate a comprehensive report for the user using the tool "Generate Final Recommendation". Include:
 
+    - Title called "Stock Analysis Report for {symbol} for {days_ahead} Days Ahead"
     - A summary of each analysis
     - The final forecasted price
     - The best model chosen
@@ -58,5 +62,9 @@ generate_stock_report_task:
   expected_output: >
     A markdown-formatted report combining all three analyses with a final investment recommendation.
   agent: report_generator
+  input_file:
+    - technical_forecast.json
+    - sentiment_analysis.json
+    - fundamental_analysis.json
   output_file: stock_report.md
 

@@ -7,6 +7,7 @@ from ai_analyst_crew.tools.sentiment_tools import analyze_sentiment_from_news
 # from ai_analyst_crew.tools.technical_tools import forecast_price, forecast_with_model
 from ai_analyst_crew.tools.technical_tools import forecast_with_multiple_models
 from ai_analyst_crew.tools.fundamental_tools import analyze_fundamentals
+from ai_analyst_crew.tools.final_recommendation_tool import generate_final_recommendation
 
 
 # If you want to run a snippet of code before or after the crew starts,
@@ -50,7 +51,7 @@ class AiAnalystCrew():
     def report_generator(self) -> Agent:
         return Agent(
             config=self.agents_config['report_generator'], # type: ignore[index]
-            tools=[],
+            tools=[generate_final_recommendation],
             verbose=True
         )
 
