@@ -18,7 +18,7 @@ def run():
     Run the crew.
     """
     print("Welcome to the AI Stock Analyst Recommender System! 🧑‍💻")
-    symbol = input("Enter stock symbol (e.g. NVDA, MSFT, ^GSPC): ").strip().upper()
+    symbol = input("Enter stock symbol (e.g. NVDA, MSFT, AAPL): ").strip().upper()
     days_ahead = int(input("Enter forecast horizon (1, 5, or 21): "))
 
     inputs = {

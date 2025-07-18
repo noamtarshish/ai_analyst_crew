@@ -108,6 +108,78 @@
 
 from crewai.tools import tool
 
+import yfinance as yf
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+
+def compute_technical_indicators(df):
+    df = df.copy()
+    df['Return'] = df['Close'].pct_change()
+    df['SMA_5'] = df['Close'].rolling(window=5).mean()
+    df['SMA_10'] = df['Close'].rolling(window=10).mean()
+    df['SMA_20'] = df['Close'].rolling(window=20).mean()
+    df['EMA_10'] = df['Close'].ewm(span=10, adjust=False).mean()
+    df['BB_Middle'] = df['Close'].rolling(window=20).mean()
+    df['BB_Std'] = df['Close'].rolling(window=20).std()
+    df['BB_Upper'] = df['BB_Middle'] + 2 * df['BB_Std']
+    df['BB_Lower'] = df['BB_Middle'] - 2 * df['BB_Std']
+    df['Momentum_10'] = df['Close'] - df['Close'].shift(10)
+    df['Volatility_10'] = df['Return'].rolling(window=10).std()
+    ema12 = df['Close'].ewm(span=12, adjust=False).mean()
+    ema26 = df['Close'].ewm(span=26, adjust=False).mean()
+    df['MACD'] = ema12 - ema26
+    df['MACD_Signal'] = df['MACD'].ewm(span=9, adjust=False).mean()
+    delta = df['Close'].diff()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.rolling(window=14).mean()
+    avg_loss = loss.rolling(window=14).mean()
+    rs = avg_gain / avg_loss
+    df['RSI_14'] = 100 - (100 / (1 + rs))
+    df['LogReturn'] = np.log(df['Close'] / df['Close'].shift(1))
+    df.dropna(inplace=True)
+    return df
+
+def normalize_features(df):
+    features_to_scale = [
+        'Open', 'High', 'Low', 'Close', 'Volume',
+        'SMA_5', 'SMA_10', 'SMA_20', 'EMA_10',
+        'BB_Middle', 'BB_Upper', 'BB_Lower', 'BB_Std',
+        'Momentum_10', 'Volatility_10',
+        'MACD', 'MACD_Signal',
+        'RSI_14', 'Return', 'LogReturn'
+    ]
+    features_to_scale = [col for col in features_to_scale if col in df.columns]
+    scaler = MinMaxScaler()
+    df_scaled = df.copy()
+    df_scaled[features_to_scale] = scaler.fit_transform(df_scaled[features_to_scale])
+    return df_scaled
+
+def fetch_and_prepare_data(symbol: str, years_back: int = 5):
+    end = pd.Timestamp.today()
+    start = end - pd.DateOffset(years=years_back)
+    df = yf.Ticker(symbol).history(start=start.strftime('%Y-%m-%d'), end=end.strftime('%Y-%m-%d'), interval="1d", auto_adjust=True)
+    if df.empty:
+        raise ValueError(f"Symbol {symbol} not found or no data available.")
+    df = df.reset_index()  # Get 'Date' column
+    df['Symbol'] = symbol
+    # Rename columns if needed to match exactly
+    df.rename(columns={
+        'Open': 'Open', 'High': 'High', 'Low': 'Low', 'Close': 'Close', 'Volume': 'Volume'
+    }, inplace=True)
+    df = compute_technical_indicators(df)
+    df = normalize_features(df)
+    # סדר עמודות
+    ordered_columns = [
+        'Date', 'Symbol', 'Open', 'High', 'Low', 'Close', 'Volume', 'Return', 'SMA_5', 'SMA_10', 'SMA_20',
+        'EMA_10', 'BB_Middle', 'BB_Std', 'BB_Upper', 'BB_Lower', 'Momentum_10', 'Volatility_10',
+        'MACD', 'MACD_Signal', 'RSI_14', 'LogReturn'
+    ]
+    # Only keep columns that exist (for robustness)
+    df = df[[c for c in ordered_columns if c in df.columns]]
+    return df
+
 @tool("Multi-Model Technical Forecast")
 def forecast_with_multiple_models(symbol: str, days_ahead: int = 5) -> str:
     """
@@ -127,8 +199,9 @@ def forecast_with_multiple_models(symbol: str, days_ahead: int = 5) -> str:
     print(f"\n🧠 DEBUG: Running multi-model forecast for {symbol} (t+{days_ahead})")
 
     # Load data
-    data_path = Path(__file__).resolve().parent.parent / "data" / "Normalized_Data.csv"
-    df = pd.read_csv(data_path)
+    # data_path = Path(__file__).resolve().parent.parent / "data" / "Normalized_Data.csv"
+    # df = pd.read_csv(data_path)
+    df = fetch_and_prepare_data(symbol)
     df['Date'] = pd.to_datetime(df['Date'])
     df = df[df["Symbol"] == symbol].sort_values("Date").copy()
 
@@ -156,7 +229,7 @@ def forecast_with_multiple_models(symbol: str, days_ahead: int = 5) -> str:
         xgb_rmse = sqrt(mean_squared_error(y_test, xgb_model.predict(X_test)))
     except Exception as e:
         xgb_pred, xgb_rmse = None, float("inf")
-        print(f"❌ XGBoost failed: {e}")
+        print(f"XGBoost failed: {e}")
 
     # ---------- Model 2: Naive ----------
     try:
@@ -165,7 +238,7 @@ def forecast_with_multiple_models(symbol: str, days_ahead: int = 5) -> str:
         naive_rmse = abs(naive_pred - last_close)
     except Exception as e:
         naive_pred, naive_rmse = None, float("inf")
-        print(f"❌ Naive failed: {e}")
+        print(f"Naive failed: {e}")
 
     # ---------- Model 3: ARIMA ----------
     try:
@@ -184,7 +257,7 @@ def forecast_with_multiple_models(symbol: str, days_ahead: int = 5) -> str:
             arima_rmse = sqrt(mean_squared_error(close_series, fitted_vals))
     except Exception as e:
         arima_forecast, arima_rmse = None, float("inf")
-        print(f"❌ ARIMA failed: {e}")
+        print(f"ARIMA failed: {e}")
 
     # ---------- Best Model ----------
     models = {

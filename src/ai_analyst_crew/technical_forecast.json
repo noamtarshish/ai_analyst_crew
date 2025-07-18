@@ -1,12 +1,10 @@
-```
-📊 Technical Forecast for NVDA (t+21 days):
-- Last Close Price: 0.9624
+📊 Technical Forecast for AAPL (t+5 days):
+- Last Close Price: 0.6866
 
-- XGBoost: 0.6596 (RMSE: 0.1416)
-- Naive: 9.4115 (RMSE: 8.4491)
-- ARIMA: 0.9610 (RMSE: 0.0291)
+- XGBoost: 0.5832 (RMSE: 0.1702)
+- Naive: 1.9468 (RMSE: 1.2602)
+- ARIMA: 0.6867 (RMSE: 0.0337)
 
 ✅ Best Model: ARIMA
-📈 Final Forecast: 0.9610
-📊 Forecast change from last close: -0.15% 📉
-```
+📈 Final Forecast: 0.6867
+📊 Forecast change from last close: +0.02% 📈
