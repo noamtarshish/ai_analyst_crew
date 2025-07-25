@@ -1,10 +1,11 @@
 # streamlit_app.py
 
-import sys
-import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+import os
 os.environ["CREWAI_STORAGE_BACKEND"] = "no"
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+
 import streamlit as st
 from ai_analyst_crew.crew import AiAnalystCrew
 from pathlib import Path
