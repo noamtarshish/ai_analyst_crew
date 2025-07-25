@@ -4,6 +4,7 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+os.environ["CREWAI_STORAGE_BACKEND"] = "no"
 import streamlit as st
 from ai_analyst_crew.crew import AiAnalystCrew
 from pathlib import Path
