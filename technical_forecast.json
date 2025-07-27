@@ -1,10 +1,10 @@
-📊 Technical Forecast for NVDA (t+5 days):
+📊 Technical Forecast for ^GSPC (t+1 days):
 - Last Close Price: 1.0000
 
-- XGBoost: 0.7045 (RMSE: 0.1161)
-- Naive: 3.0645 (RMSE: 2.0645)
-- ARIMA: 1.0006 (RMSE: 0.0237)
+- XGBoost: 0.7268 (RMSE: 0.1290)
+- Naive: 1.4045 (RMSE: 0.4045)
+- ARIMA: 0.9986 (RMSE: 0.0271)
 
 ✅ Best Model: ARIMA
-📈 Final Forecast: 1.0006
-📊 Forecast change from last close: +0.06% 📈
+📈 Final Forecast: 0.9986
+📊 Forecast change from last close: -0.14% 📉

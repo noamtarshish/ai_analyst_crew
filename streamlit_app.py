@@ -10,6 +10,8 @@ from pathlib import Path
 from fpdf import FPDF
 import re
 import tempfile
+import yfinance as yf
+
 
 def render_report(report_text: str):
     st.markdown("### ✅ Final Recommendation Report")
@@ -47,12 +49,28 @@ st.title("📈 AI Stock Recommender")
 
 # קלט מהמשתמש
 symbol = st.text_input("Enter Stock Symbol (e.g., NVDA, AAPL, TSLA)", "NVDA").upper()
+st.markdown(
+    """
+    <div style='text-align: left; margin-top: -10px; margin-bottom: 20px;'>
+        <a href="https://finance.yahoo.com/markets" target="_blank" style="text-decoration: none;">
+            📄 <b>View full list of stock symbols on Yahoo Finance</b> <span style='font-size: 0.9em;'>(external link)</span>
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+# st.markdown("[📄 View available stock symbols on Yahoo Finance](https://finance.yahoo.com/markets) _(external link)_", unsafe_allow_html=True)
 days_choice = st.radio("Forecast Horizon (Days)", options=[1, 5, 21], horizontal=True)
 
 # כפתור להרצה
 if st.button("🔍 Run Analysis"):
     with st.spinner("Running crew... please wait..."):
         try:
+            ticker = yf.Ticker(symbol)
+            info = ticker.info
+            if info is None or info.get("shortName") is None:
+                raise ValueError(f"Symbol '{symbol}' not found. Please enter a valid stock symbol.")
+
             result = AiAnalystCrew().crew().kickoff(inputs={
                 "symbol": symbol,
                 "days_ahead": days_choice
@@ -68,16 +86,16 @@ if st.button("🔍 Run Analysis"):
             with open(output_path, "w", encoding="utf-8") as f:
                 f.write(final_output)
 
-            st.success(f"Markdown saved to: {output_path}")
+            # st.success(f"Markdown saved to: {output_path}")
 
-            # כפתור להורדת PDF
-            pdf_bytes = export_pdf(final_output)
-            st.download_button(
-                label="📥 Download PDF Report",
-                data=pdf_bytes,
-                file_name=f"{symbol}_forecast_report.pdf",
-                mime="application/pdf"
-            )
+            # # כפתור להורדת PDF
+            # pdf_bytes = export_pdf(final_output)
+            # st.download_button(
+            #     label="📥 Download PDF Report",
+            #     data=pdf_bytes,
+            #     file_name=f"{symbol}_forecast_report.pdf",
+            #     mime="application/pdf"
+            # )
 
         except Exception as e:
             st.error(f"❌ Error occurred while running the crew:\n{e}")
