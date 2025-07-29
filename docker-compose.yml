@@ -1,8 +1,8 @@
-version: "3.9"
-
 services:
   ai-analyst-crew:
-    build: ../../Desktop
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8501:8501"
     restart: unless-stopped

@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # שלב 4 - העתקת כל קבצי הפרויקט
-COPY ../../Desktop .
+COPY . .
 
 # שלב 5 - פתיחת פורט של Streamlit
 EXPOSE 8501
