@@ -1,54 +1,82 @@
-# AiAnalystCrew Crew
+# 🤖 AiAnalystCrew: AI-Powered Multi-Agent Stock Recommendation System
 
-Welcome to the AiAnalystCrew Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+AiAnalystCrew is an intelligent, agent-based investment recommendation system built with **CrewAI**.  
+It simulates a team of virtual stock analysts – each specializing in a different domain such as **technical analysis**, **sentiment analysis**, and **fundamental analysis**.
 
-## Installation
+By combining the power of machine learning models, real-time news sentiment, and financial ratios, the system delivers **personalized stock recommendations** (Buy / Hold / Sell) in a user-friendly report format.
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+The project is fully containerized with Docker – no local Python setup needed.
 
-First, if you haven't already, install uv:
+## 📦 Requirements
+- [Docker](https://docs.docker.com/get-docker/) installed
+- [Docker Compose](https://docs.docker.com/compose/install/) installed (if not bundled with Docker Desktop)
 
+---
+
+## 🚀 Running the Project with Docker
+
+### 1️⃣ Build and start the container
+In the root folder of the project, run:
 ```bash
-pip install uv
+docker compose up --build
+```
+This will:
+- Build the Docker image using the included `Dockerfile`
+- Install all dependencies inside the container
+- Start the application
+
+---
+
+### 2️⃣ Access the application
+Once the container is running, open:
+```
+http://localhost:8501
+```
+If you want to access it from another device on the same network, replace `localhost` with your computer’s IP address:
+```
+http://192.168.x.x:8501
+```
+(Find your IP using `ipconfig` on Windows or `ifconfig` / `ip a` on Mac/Linux.)
+
+---
+
+### 3️⃣ Stopping the application
+Press `CTRL + C` in the terminal where it’s running  
+or run:
+```bash
+docker compose down
 ```
 
-Next, navigate to your project directory and install the dependencies:
+---
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
+## 🛠 Customization
+To modify project settings:
+- Update `src/ai_analyst_crew/config/agents.yaml` – define agents
+- Update `src/ai_analyst_crew/config/tasks.yaml` – define tasks
+- Update `.env` – add your `OPENAI_API_KEY`
+
+---
+
+## 📄 Project Structure
 ```
-### Customizing
-
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/ai_analyst_crew/config/agents.yaml` to define your agents
-- Modify `src/ai_analyst_crew/config/tasks.yaml` to define your tasks
-- Modify `src/ai_analyst_crew/crew.py` to add your own logic, tools and specific args
-- Modify `src/ai_analyst_crew/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+.
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── .env                # Your environment variables (e.g., OPENAI_API_KEY)
+├── streamlit_app.py    # Main Streamlit entry point
+└── src/ai_analyst_crew # Source code for agents, tasks, configs
 ```
 
-This command initializes the ai-analyst-crew Crew, assembling the agents and assigning them tasks as defined in your configuration.
+---
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+## 💡 Notes
+- No Python installation is required on your local machine.
+- All dependencies are installed inside the Docker container.
+- To update the code, simply edit your files and re-run:
+```bash
+docker compose up --build
+```
+- If you want to access from outside your network, you will need to configure port forwarding on your router or use a tunneling service like ngrok.
 
-## Understanding Your Crew
-
-The ai-analyst-crew Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the AiAnalystCrew Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+---
